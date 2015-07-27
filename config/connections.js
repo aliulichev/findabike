@@ -21,6 +21,16 @@
 
 module.exports.connections = {
 
+ Mongodb: {
+    adapter: 'sails-mongo',
+    host: 'ds055762.mongolab.com',
+    port: 33390,
+    user: 'admin',
+    password: 'findabike',
+    database: 'heroku_s16wdr1d'
+  },
+
+
   /***************************************************************************
   *                                                                          *
   * Local disk storage for DEVELOPMENT ONLY                                  *

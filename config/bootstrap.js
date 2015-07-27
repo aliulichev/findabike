@@ -10,15 +10,10 @@
  */
  var http = require('http');
 var groups = ['245976828868737', '857687074272396', '1413120325569205', '1585480988396293']
-var startFetchingGroup = function(groupId){
+var trackGroup = function(groupId){
 	setTimeout(function(){ 
-		DataService.fetchData(groupId, function(data, err){
-			if(err){
-				sails.log(err)
-				return;
-			}
-			sails.log(data.length + ' new items for group ' + groupId)
-			startFetchingGroup(groupId)
+		GroupService.checkUpdates(groupId,function(){
+			trackGroup(groupId)
 		})
 	 }, 1000);
 }
@@ -31,6 +26,6 @@ module.exports.bootstrap = function(cb) {
 
   // It's very important to trigger this callback method when you are finished
   // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
-  groups.forEach(function(group){startFetchingGroup(group)})
+  groups.forEach(function(group){trackGroup(group)})
   cb();
 };

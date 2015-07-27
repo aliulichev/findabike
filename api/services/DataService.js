@@ -1,7 +1,7 @@
 
 // DataService.js - in api/services
 var https = require('https');
-var token = 'CAAF3VVJtxX0BAFUTqf60nnZCDNlcVzQskqufBqq4Fn0dRIvbgGtJLZB1TlQsqctNjaZBBGb8NQoaY0WbrZA1ZACDH52Uh8DRR7ZCncu3nolpC7JJZBR6ZApIzip9Gp5fR3gKsEKpKCaE03bZAgNirb8tcpBaPCDewlhwPr65Y6y3JI0A2yqDuYun6phuvRMRzBaU6vMQXWrv0Mm3n9tVgoKKJuwY5DEJHNT4ZD'
+var token = 'CAAE7j6ehI9IBAHOu2Nke5IPpZAVVwAQcoZCp0owxJP7q5P8E2ZBJdAIBQ1SZBjnLpr3Cc7BG0CCZBV4FUoC0ZCByI5pngZC0CrJzeV8UmkMFw72zjjVEsOMPuJ83xYOgKZB7xl3rxv3YmvxAC0TGHmiCeoftAIfzhTzpbEyBhRSuatIX75HS1ubInEqjyuid4fX8yi20dg5UVpB2RoXw7s7jl9EJ7QcmKWgZD'
 
 var parse = function(post){
     var result = {}
@@ -13,6 +13,8 @@ var parse = function(post){
         return result;
     }
     result.message = message
+    result.created = new Date(Date.parse(post.created_time))
+
     var tries = [ 
         message.match(/\s*\.*\-*(\d+)\s*\-*€\.*\s*/),
         message.match(/\s*\.*€\s*\-*(\d+)\-*\.*\s*/),
@@ -40,21 +42,14 @@ var parse = function(post){
 }
 
 var parseData =function(data, groupId){
+  //sails.log(data)  
   var results = data.data.map(parse)
-  // var withPrice = _.filter(results, function(result){ return result.price})
-  // var withoutPrice = _.filter(results, function(result){ return !result.price})
-  // var filtered = _.filter(results, function(result){ return result.price < 70})
-  
-  // var prices = withPrice.map(function(bike) {return bike.price})
-  // sails.log("Group" + groupId)
-  // sails.log("All results :" + results.length)
-  // sails.log("All detected :" + withPrice.length)
-  return results;
+  return _.filter(results,function(post) {return Object.keys(post).length !== 0});
 }
 
 var fetchNew = function(groupId, callback){
     var url = 'https://graph.facebook.com/v2.4/' + groupId +
-    '/feed/?fields=message,picture,full_picture&limit=100&access_token=' + token
+    '/feed/?fields=message,picture,full_picture,created_time&limit=100&access_token=' + token
     https.get(url, function(res) {
         var body = '';
 

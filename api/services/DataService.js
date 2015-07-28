@@ -1,7 +1,7 @@
 
 // DataService.js - in api/services
 var https = require('https');
-var token = 'CAAE7j6ehI9IBAHOu2Nke5IPpZAVVwAQcoZCp0owxJP7q5P8E2ZBJdAIBQ1SZBjnLpr3Cc7BG0CCZBV4FUoC0ZCByI5pngZC0CrJzeV8UmkMFw72zjjVEsOMPuJ83xYOgKZB7xl3rxv3YmvxAC0TGHmiCeoftAIfzhTzpbEyBhRSuatIX75HS1ubInEqjyuid4fX8yi20dg5UVpB2RoXw7s7jl9EJ7QcmKWgZD'
+var token = 'CAAE7j6ehI9IBAKg3P1iUPXFKVoHZBW56dfpNvfvMpJK4PYLBRycQb0surtOSRQrxZA61UoIUiXtlwrA5912i8oz2LYZBjywIYFEJLDbfOnCRYAw6J3M8yma7As6CzHL1ShYwJmgB9Ck7AWHkZBi8AmWb3Hi2iJdhhyRKX5FMuM7FFso7gM0aZCrlb47TuuRByFXUB4sLzaUetmCpkwcZCpZCqWbGwRDyssZD'
 
 var parse = function(post){
     var result = {}
@@ -47,9 +47,13 @@ var parseData =function(data, groupId){
   return _.filter(results,function(post) {return Object.keys(post).length !== 0});
 }
 
-var fetchNew = function(groupId, callback){
-    var url = 'https://graph.facebook.com/v2.4/' + groupId +
-    '/feed/?fields=message,picture,full_picture,created_time&limit=100&access_token=' + token
+var fetchNew = function(groupId,since, callback){
+    var sinceUrlParam = since != undefined ? "&since=" + since.getTime(): ''
+     var url = 'https://graph.facebook.com/v2.4/' + groupId +
+    '/feed/?fields=message,picture,full_picture,created_time&limit=100'+
+    sinceUrlParam
+    +'&access_token=' + token
+   // sails.log(url)
     https.get(url, function(res) {
         var body = '';
 
@@ -69,7 +73,7 @@ var fetchNew = function(groupId, callback){
 
 module.exports = {
 
-    fetchData: function(groupId, callback) {       
-            fetchNew(groupId, callback)
+    fetchData: function(groupId,since, callback) {       
+            fetchNew(groupId, since, callback)
     }
 };

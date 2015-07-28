@@ -21,8 +21,10 @@ module.exports = {
           if(err){
              cb(undefined, err)
           } 
-          if(group){ 
-              group.lastResultCreated = lastResultCreated
+          if(group){
+              if(lastResultCreated) {
+                group.lastResultCreated = lastResultCreated
+              }  
               group.lastRun = new Date()
               group.save(cb);
               return;

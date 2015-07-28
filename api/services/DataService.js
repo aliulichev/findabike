@@ -1,7 +1,7 @@
 
 // DataService.js - in api/services
 var https = require('https');
-var token = 'CAAE7j6ehI9IBAKg3P1iUPXFKVoHZBW56dfpNvfvMpJK4PYLBRycQb0surtOSRQrxZA61UoIUiXtlwrA5912i8oz2LYZBjywIYFEJLDbfOnCRYAw6J3M8yma7As6CzHL1ShYwJmgB9Ck7AWHkZBi8AmWb3Hi2iJdhhyRKX5FMuM7FFso7gM0aZCrlb47TuuRByFXUB4sLzaUetmCpkwcZCpZCqWbGwRDyssZD'
+var token = '380737268756635|G-m4DS2gM7-YnfOpFiGeGkFPSdY'
 
 var parse = function(post){
     var result = {}
@@ -13,7 +13,11 @@ var parse = function(post){
         return result;
     }
     result.message = message
-    result.created = new Date(Date.parse(post.created_time))
+    result.created = new Date(post.created_time * 1000)
+
+    result.link = post.link
+    result.id = post.id
+    result.picture = post.full_picture
 
     var tries = [ 
         message.match(/\s*\.*\-*(\d+)\s*\-*€\.*\s*/),
@@ -28,7 +32,7 @@ var parse = function(post){
          var result = {detected:false}
          if(match &&match[1]){
              result.price = parseInt(match[1])
-             result.detected = true 
+             result.detected = true
          }
             
          return result  
@@ -50,10 +54,10 @@ var parseData =function(data, groupId){
 var fetchNew = function(groupId,since, callback){
     var sinceUrlParam = since != undefined ? "&since=" + since.getTime(): ''
      var url = 'https://graph.facebook.com/v2.4/' + groupId +
-    '/feed/?fields=message,picture,full_picture,created_time&limit=100'+
+    '/feed/?fields=message,picture,full_picture,link,created_time&limit=100&date_format=U'+
     sinceUrlParam
     +'&access_token=' + token
-   // sails.log(url)
+   // console.log(url)
     https.get(url, function(res) {
         var body = '';
 

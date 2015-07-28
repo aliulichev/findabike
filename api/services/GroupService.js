@@ -31,9 +31,10 @@ module.exports = {
     checkUpdates: function(groupId, callback){
     	 getNew(groupId, function(data){
     	 	var lastPostTime = getLastResultDate(data)
-    	 	sails.log(data.length + ' new items for group ' + groupId + ". Last post at" + lastPostTime)
+    	 	sails.log(data.length + ' new items for group ' + groupId + ". Last post at " + lastPostTime)
     	 	updateGroup(groupId, lastPostTime, function(group){
-    	 		 callback()
+    	 		 NotificationService.process(data)
+    	 		 callback(data)
     	 	})
     	 })
     }

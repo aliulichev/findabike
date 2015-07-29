@@ -8,7 +8,7 @@ angular.module('app').directive('imgPreloader', function () {
 
             var imgs = [], i;
 
-            for (i = 1; i < 5; i++) {
+            for (i = 2; i < 5; i++) {
                 imgs[i] = new Image();
                 imgs[i].src = '/images/' + i + '.jpg';
             }

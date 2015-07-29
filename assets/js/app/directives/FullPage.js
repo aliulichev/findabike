@@ -5,6 +5,14 @@ angular.module('app').directive('fullPage', function () {
         templateUrl: '/templates/FullPage.html',
         controller: function ($scope, $element, $attrs) {
 
+            $scope.form = {
+                id: null,
+                email: null,
+                range: 50,
+                keywords: []
+            }
+        },
+        link: function () {
             $(document).ready(function () {
                 $('#fullpage').fullpage();
                 $.fn.fullpage.setAllowScrolling(false);

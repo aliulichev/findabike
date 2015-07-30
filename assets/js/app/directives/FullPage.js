@@ -10,7 +10,11 @@ angular.module('app').directive('fullPage', function () {
                 email: null,
                 range: 50,
                 keywords: []
-            }
+            };
+
+            $scope.submitForm = function () {
+                console.log($scope.form);
+            };
         },
         link: function () {
             $(document).ready(function () {

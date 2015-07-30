@@ -17,6 +17,7 @@
 var cssFilesToInject = [
     'js/dependencies/bower_components/material-design-lite/material.css',
     'js/dependencies/bower_components/fullpage.js/jquery.fullPage.css',
+    'js/dependencies/bower_components/ng-tags-input/ng-tags-input.min.css',
     'styles/**/*.css'
 ];
 
@@ -35,6 +36,7 @@ var jsFilesToInject = [
     'js/dependencies/bower_components/material-design-lite/material.js',
     'js/dependencies/bower_components/jquery/dist/jquery.min.js',
     'js/dependencies/bower_components/fullpage.js/jquery.fullPage.min.js',
+    'js/dependencies/bower_components/ng-tags-input/ng-tags-input.min.js',
 
     // All of the rest of your client-side js files
     // will be injected here in no particular order.

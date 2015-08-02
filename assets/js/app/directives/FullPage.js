@@ -16,7 +16,14 @@ angular.module('app').directive('fullPage', ['$http', function ($http) {
 
             $scope.submitForm = function () {
 
-                $http.post('/subscribe', $scope.form).
+                $http.post('/subscribe', {
+                    id: $scope.form.id,
+                    email: $scope.form.email,
+                    price: $scope.form.price,
+                    keywords: $scope.form.keywords.map(function (item) {
+                        return item.text;
+                    })
+                }).
                     then(function(res) {
                         $scope.hide_form = true;
                     }, function(response) {

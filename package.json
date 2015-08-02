@@ -36,8 +36,5 @@
     "url": "git://github.com/toha/findabike.git"
   },
   "author": "toha",
-  "license": "",
-  "devDependencies": {
-    "grunt": "^0.4.2"
-  }
+  "license": ""
 }

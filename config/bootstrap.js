@@ -18,7 +18,7 @@ var trackGroup = function(groupId){
 		GroupService.checkUpdates(groupId,function(){
 			trackGroup(groupId)
 		})
-	 }, 10000);
+	 }, 1000);
 }
 
 

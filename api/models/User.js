@@ -19,7 +19,8 @@ module.exports = {
 
       email: {
         type:"string", 
-        required:true
+        required:true,
+        unique: true
       },
   	 priceFrom: {
   			type:"integer", 
@@ -29,7 +30,7 @@ module.exports = {
         type:"integer", 
         required:true
       },
-      keywoards: {
+      keywords: {
         type:"array", 
         required:false
       }		

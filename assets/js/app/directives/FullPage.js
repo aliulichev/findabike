@@ -1,4 +1,4 @@
-angular.module('app').directive('fullPage', function () {
+angular.module('app').directive('fullPage', ['$http', function () {
     return {
         restrict: 'E',
         replace: true,
@@ -14,6 +14,17 @@ angular.module('app').directive('fullPage', function () {
 
             $scope.submitForm = function () {
                 console.log($scope.form);
+
+                $http.post('/someUrl', $scope.form).
+                    then(function(res) {
+
+                        console.log('suc');
+                        console.log(res);
+
+                    }, function(response) {
+                        console.log('err');
+                    });
+
             };
         },
         link: function () {
@@ -25,4 +36,4 @@ angular.module('app').directive('fullPage', function () {
             });
         }
     }
-});
+}]);

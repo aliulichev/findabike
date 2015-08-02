@@ -1,17 +1,17 @@
 <div id="fullpage">
     <div class="section s1">
         <div class="block d1000">
-            <div class="form">
+            <div class="form" ng-show="!hide_form">
                 <form action="#" ng-submit="submitForm();">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="email" id="sample3" ng-model="form.email" required/>
                         <label class="mdl-textfield__label" for="sample3">Email</label>
                     </div>
                     <div class="range">
-                        <span class="val">max price: €{{form.range}}</span>
+                        <span class="val">max price: €{{form.price}}</span>
                         <span class="slider">
                             <input class="mdl-slider mdl-js-slider" type="range"
-                                   min="0" max="1000" value="0" ng-model="form.range" tabindex="0"/>
+                                   min="0" max="1000" value="0" ng-model="form.price" tabindex="0"/>
                         </span>
                     </div>
                     <div>
@@ -24,6 +24,9 @@
                         </button>
                     </div>
                 </form>
+            </div>
+            <div class="form" ng-show="hide_form">
+                OK =)
             </div>
         </div>
     </div>

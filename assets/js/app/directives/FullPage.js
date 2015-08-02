@@ -1,4 +1,4 @@
-angular.module('app').directive('fullPage', function () {
+angular.module('app').directive('fullPage', ['$http', function ($http) {
     return {
         restrict: 'E',
         replace: true,
@@ -8,12 +8,19 @@ angular.module('app').directive('fullPage', function () {
             $scope.form = {
                 id: null,
                 email: null,
-                range: 50,
+                price: 50,
                 keywords: []
             };
 
+            $scope.hide_form = false;
+
             $scope.submitForm = function () {
-                console.log($scope.form);
+
+                $http.post('/subscribe', $scope.form).
+                    then(function(res) {
+                        $scope.hide_form = true;
+                    }, function(response) {
+                    });
             };
         },
         link: function () {
@@ -25,4 +32,4 @@ angular.module('app').directive('fullPage', function () {
             });
         }
     }
-});
+}]);

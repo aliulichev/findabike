@@ -1,0 +1,57 @@
+<div id="fullpage">
+    <div class="section s1">
+        <div class="block d1000 big">
+            <span>We will help you to find</span>
+            <br/>
+            <span>a new bike.</span>
+            <br/>
+            <br/>
+            <br/>
+        </div>
+    </div>
+    <div class="section s2">
+        <div class="block d1000">
+            <div class="form">
+                <form action="#" ng-submit="submitForm();">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="email" id="sample3" ng-model="form.email" required/>
+                        <label class="mdl-textfield__label" for="sample3">Email</label>
+                    </div>
+                    <div class="range">
+                        <span class="val">max price: €{{form.range}}</span>
+                        <span class="slider">
+                            <input class="mdl-slider mdl-js-slider" type="range"
+                                   min="0" max="1000" value="0" ng-model="form.range" tabindex="0"/>
+                        </span>
+                    </div>
+                    <div>
+                        <tags-input ng-model="form.keywords"></tags-input>
+                    </div>
+                    <div class="submit_wrapper">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect submit" type="submit">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="section s3">
+        <div class="block d1000">
+            <span>Here will be awesome</span>
+            <br/>
+            <span>text.</span>
+            <span>Here will be awesome</span>
+            <br/>
+            <span>text.</span>
+        </div>
+        <div class="block d1500">
+            <span>Here will be awesome</span>
+            <br/>
+            <span>text.</span>
+            <span>Here will be awesome</span>
+            <br/>
+            <span>text.</span>
+        </div>
+    </div>
+</div>

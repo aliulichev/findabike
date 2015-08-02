@@ -1,0 +1,11 @@
+{
+    "name": "findabike",
+    "version": "0.0.1",
+    "dependencies": {
+        "underscore": "~1.6.0",
+        "angular": "~1.4.3",
+        "material-design-lite": "~1.0.1",
+        "fullpage.js": "~2.6.7",
+        "ng-tags-input": "~3.0.0"
+    }
+}

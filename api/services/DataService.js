@@ -13,7 +13,7 @@ var parse = function(post){
         return result;
     }
     result.message = message
-    result.created = new Date(post.created_time * 1000)
+    result.created = new Date(post.created_time)
 
     result.link = post.link
     result.id = post.id
@@ -46,7 +46,7 @@ var parse = function(post){
 }
 
 var parseData =function(data, groupId){
-  //sails.log(data)  
+ // sails.log(data)  
   var results = data.data.map(parse)
   return _.filter(results,function(post) {return Object.keys(post).length !== 0});
 }
@@ -57,7 +57,7 @@ var fetchNew = function(groupId,since, callback){
     '/feed/?fields=message,picture,full_picture,link,created_time&limit=100&date_format=U'+
     sinceUrlParam
     +'&access_token=' + token
-   // console.log(url)
+  // console.log(url)
     https.get(url, function(res) {
         var body = '';
 

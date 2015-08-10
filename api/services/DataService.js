@@ -57,7 +57,7 @@ var fetchNew = function(groupId,since, callback){
     '/feed/?fields=message,picture,full_picture,link,created_time&limit=100&date_format=U'+
     sinceUrlParam
     +'&access_token=' + token
-   console.log(url)
+   sails.log(url)
     https.get(url, function(res) {
         var body = '';
 

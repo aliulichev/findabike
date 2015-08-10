@@ -52,7 +52,8 @@ var parseData =function(data, groupId){
 }
 
 var fetchNew = function(groupId,since, callback){
-    var sinceUrlParam = since != undefined ? "&since=" + since.getTime(): ''
+
+    var sinceUrlParam = since != undefined ? "&since=" + Math.round(since.getTime()/1000): ''
      var url = 'https://graph.facebook.com/v2.4/' + groupId +
     '/feed/?fields=message,picture,full_picture,link,created_time&limit=100&date_format=U'+
     sinceUrlParam

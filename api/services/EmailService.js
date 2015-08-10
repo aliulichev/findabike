@@ -57,7 +57,7 @@ module.exports = {
                     cb(err) 
                     return
                 }
-                console.log(post)
+                //console.log(post)
                send(email, html, post.price, function(err){
                     if(err) {
                         sails.log(err)

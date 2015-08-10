@@ -13,7 +13,7 @@ var parse = function(post){
         return result;
     }
     result.message = message
-    result.created = new Date(post.created_time)
+    result.created = new Date(post.created_time * 1000)
 
     result.link = post.link
     result.id = post.id
@@ -51,14 +51,10 @@ var parseData =function(data, groupId){
   return _.filter(results,function(post) {return Object.keys(post).length !== 0});
 }
 
-var fetchNew = function(groupId,since, callback){
-
-    var sinceUrlParam = since != undefined ? "&since=" + Math.round(since.getTime()/1000): ''
+var fetchNew = function(groupId, callback){
      var url = 'https://graph.facebook.com/v2.4/' + groupId +
-    '/feed/?fields=message,picture,full_picture,link,created_time&limit=100&date_format=U'+
-    sinceUrlParam
-    +'&access_token=' + token
-   sails.log(url)
+    '/feed/?fields=message,picture,full_picture,link,created_time&limit=100&date_format=U&access_token=' + token
+   // console.log(url)
     https.get(url, function(res) {
         var body = '';
 
@@ -78,7 +74,7 @@ var fetchNew = function(groupId,since, callback){
 
 module.exports = {
 
-    fetchData: function(groupId,since, callback) {       
-            fetchNew(groupId, since, callback)
+    fetchData: function(groupId, callback) {       
+            fetchNew(groupId, callback)
     }
 };

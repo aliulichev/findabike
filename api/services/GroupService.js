@@ -8,28 +8,38 @@ var getLastResultDate = function(data){
 		}).map(function(post){return post.created}).first().value()
 }
 
-var fetchData = function(groupId, since, callback){
-	DataService.fetchData(groupId, since, function(data, err){
+var fetchData = function(groupId, callback){
+	DataService.fetchData(groupId, function(data, err){
 			if(err){
 				sails.log(err)
 				cb(undefined, err)
 				return;
-			}
-			callback(data, err)	
+			}	
+			callback(err, data)	
 		})
 }
 
 var getNew = function(groupId, callback){
 	 FBGroup.findOne({fbId:groupId}).exec(function findOneCB(err, group){
-	 		var since = group != undefined ? group.lastResultCreated : undefined
-	 		fetchData(groupId, since, callback)
+	 	    var yesterday = new Date();
+			yesterday.setDate(yesterday.getDate() - 1);
+	 		var since = group != undefined ? group.lastResultCreated : yesterday
+	 		fetchData(groupId, function(err, data){
+	 
+	 			 if(err) {
+	 			 	callback(err, undefined); return;
+	 			 }
+
+	 			 var filtered = _.filter(data, function(post){return post.created.getTime() > since.getTime()})
+	 			 callback(filtered)
+	 		})
 	 });
 }
 
 module.exports = {
 
     checkUpdates: function(groupId, callback){
-    	 getNew(groupId, function(data){
+    	 getNew(groupId,  function(data){
     	 	var lastPostTime = getLastResultDate(data)
     	 	sails.log(data.length + ' new items for group ' + groupId + ". Last post at " + lastPostTime)
     	 	updateGroup(groupId, lastPostTime, function(group){

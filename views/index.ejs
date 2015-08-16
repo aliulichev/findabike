@@ -1,4 +1,34 @@
-<full-page></full-page>
-<!--<menu></menu>-->
-<div class="title">find<i>a</i>bike</div>
-<!--<img-preloader></img-preloader>-->
+<div id="fullpage" ng-controller="PageCtrl">
+    <div class="title">find<i>a</i>bike</div>
+    <div class="info">
+        <p>here will be explanation text</p>
+    </div>
+    <div class="form" ng-show="!hide_form">
+        <form action="#" ng-submit="submitForm();">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="email" id="sample3" ng-model="form.email" required/>
+                <label class="mdl-textfield__label" for="sample3">Email</label>
+            </div>
+            <div class="range">
+                <span class="val">max price: €{{form.price}}</span>
+                <br/>
+                <span class="slider">
+                    <input class="mdl-slider mdl-js-slider" type="range"
+                           min="0" max="1000" value="0" ng-model="form.price" tabindex="0"/>
+                </span>
+            </div>
+            <div class="keywords">
+                <tags-input ng-model="form.keywords"></tags-input>
+            </div>
+            <div class="submit_wrapper">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect submit"
+                        type="submit">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="form" ng-show="hide_form">
+        OK =)
+    </div>
+</div>

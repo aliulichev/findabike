@@ -9,16 +9,16 @@
  * http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.bootstrap.html
  */
  var http = require('http');
-var groups = ['245976828868737', '857687074272396', '1413120325569205', '1585480988396293', '1668369190059109']
+//var groups = ['245976828868737', '857687074272396', '1413120325569205', '1585480988396293', '1668369190059109']
 //var groups = ['1413120325569205']
 //bike matketplace
-//var groups = ['245976828868737']
+var groups = ['1668369190059109']
 var trackGroup = function(groupId){
 	setTimeout(function(){ 
 		GroupService.checkUpdates(groupId,function(){
 			trackGroup(groupId)
 		})
-	 }, 10000);
+	 }, 1000);
 }
 
 

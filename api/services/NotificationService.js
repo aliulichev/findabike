@@ -1,4 +1,7 @@
 function matchKeywords(user, post){
+	if(user.keywords.length === 0){
+		return true;
+	}
 	var matched = _.find(user.keywords, function( keyword ){
 	 	return post.message.toLowerCase().indexOf(keyword.toLowerCase()) != -1
 	 }) != undefined

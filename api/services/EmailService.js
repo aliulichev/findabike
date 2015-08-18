@@ -13,7 +13,7 @@ var transporter = nodemailer.createTransport({
     }
 });
 
-function render(name, post, cb){
+function render(user, post, cb){
     email.render(post, function (err, result) {
     if (err) return cb(err)
     cb(undefined, result.html)    
@@ -49,16 +49,16 @@ function send(email, html, price, cb) {
 
 module.exports = {
 
-    sendPost: function(email, name, post,cb) {       
+    sendPost: function(user, post,cb) {       
     	
-        render (name, {post:post, name:name}, function(err, html) {
+        render (user, {post:post, name:name, userId:user.id}, function(err, html) {
                if(err) {
                     sails.log(err) 
                     cb(err) 
                     return
                 }
                 //console.log(post)
-               send(email, html, post.price, function(err){
+               send(user.email, html, post.price, function(err){
                     if(err) {
                         sails.log(err)
                         cb(err)

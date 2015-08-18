@@ -32,13 +32,19 @@ module.exports = {
       },
       keywords: {
         type:"array", 
-        required:false
+        defaultsTo:[]
       }		
   }, 
 
   findByPrice:function(price, cb){
   	  User.find({ priceFrom: { '<=': price }, priceTo: { '>=': price }}).exec(cb)
+  }, 
+
+  removeById:function(id, cb){
+      User.destroy({id:id}).exec(cb) 
   }
+
+
 
 };
 

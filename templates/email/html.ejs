@@ -52,12 +52,12 @@
                             <tbody>
                             <tr>
                                 <td align="left" width="50%"
-                                    style="padding: 15px 15px 15px 35px; font-family: arial,sans-serif; font-size: 16px; line-height: 40px; color: #fff;">
+                                    style="padding: 15px 15px 15px 55px; font-family: arial,sans-serif; font-size: 16px; line-height: 40px; color: #fff;">
                                     <h2><%= post.price %>€</h2>
                                 </td>
                                 <td align="right" width="50%"
-                                    style="padding: 0 15px 15px 0px; font-family: arial,sans-serif; font-size: 14px; font-weight: bold;">
-                                    <a href="#"
+                                    style="padding: 0 15px 15px 0; font-family: arial,sans-serif; font-size: 14px; font-weight: bold;">
+                                    <a href="http://www.facebook.com/<%= post.id %>"
                                        style="text-decoration: none; color: #000; display: block; padding: 0 5px; width: 100px; text-align: center; line-height: 40px; background: #dddddd; border-radius: 3px; border-bottom: 3px solid #999999">Go
                                         to post</a>
                                 </td>
@@ -72,6 +72,11 @@
             </v:textbox>
             </v:rect>
             <![endif]-->
+        </td>
+    </tr>
+    <tr>
+        <td align="center"><a href="<%= userid %>"
+                              style="font-family: arial, sans-serif; text-decoration: none; color: #000; display: block; padding: 0 5px; width: 100px; text-align: center; line-height: 40px; background: #dddddd; border-radius: 3px; border-bottom: 3px solid #999999">Unsubscribe</a>
         </td>
     </tr>
     </tbody>

@@ -1,3 +1,8 @@
+function matchKeywords(user, post){
+	 _.find(user.keywords, function( keyword ){
+	 	return post.message.toLowerCase().indexOf(keyword.toLowerCase()) != -1
+	 }) !=undefined
+}
 function match(post, cb){
 		User.findByPrice(post.price, function(err, users){
 			 if(err){
@@ -5,7 +10,7 @@ function match(post, cb){
 			 	 cb(err)
 			 	 return;
 			 }
-			 cb(undefined, users)
+			 cb(undefined, _.filter(users, function(user, post) { return matchKeywords(user, post) }))
 		});
 	}
 
@@ -28,7 +33,7 @@ function match(post, cb){
 	
 	function notifyUser(user, post){
 		
-		EmailService.sendPost(user.email, user.name, post, function(error){
+		EmailService.sendPost(user, post, function(error){
 			if(error)
 				sails.log(error)
 			else

@@ -46,6 +46,7 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-   'post /subscribe' : {controller:'UserController', action:'subscribe'}
+   'post /subscribe' : {controller:'UserController', action:'subscribe'},
+   'get /unsubscribe/:token' : {controller:'UserController', action:'unsubscribe'}
 
 };

@@ -12,6 +12,9 @@ module.exports = {
 		var email = req.param('email');
 		var price = req.param('price')
 		var keywords = req.param('keywords')
+		if(!keywords){
+			keywords = []
+		}
 		User.findOne({ email: email}).exec(function(err, user){
 			 if(err){sails.log(err); res.badRequest(err); return;}
 			 
@@ -44,7 +47,25 @@ module.exports = {
 
 		})	
 		
+	}, 
+	unsubscribe:function(req,res){
+		var token = req.param('token');
+		User.removeById(token, function(err){
+			if(err){
+				sails.log(err)
+				res.badRequest(err)
+			    return;
+	
+			}
+
+			return res.view('unsubscribed', {
+
+  			})
+		})
 	}
+
+	
+
 	
 };
 

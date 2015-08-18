@@ -34,16 +34,15 @@ function send(email, html, price, cb) {
             subject: 'Bike for ' + price + ' EUR', // Subject line
             html: html
     };
-    cb()
-         // transporter.sendMail(mailOptions, function(error, info){
-         //        if(error){
-         //            console.log(error);
-         //            cb(error)
-         //        }else {
-         //            console.log('Message sent: ' + info.response);
-         //            cb()
-         //        }
-         //    });
+         transporter.sendMail(mailOptions, function(error, info){
+                if(error){
+                    console.log(error);
+                    cb(error)
+                }else {
+                    console.log('Message sent: ' + info.response);
+                    cb()
+                }
+            });
 }
 
 
@@ -51,7 +50,7 @@ module.exports = {
 
     sendPost: function(user, post,cb) {       
     	
-        render (user, {post:post, name:name, userId:user.id}, function(err, html) {
+        render (user, {post:post, name:user.name, userId:user.id}, function(err, html) {
                if(err) {
                     sails.log(err) 
                     cb(err) 

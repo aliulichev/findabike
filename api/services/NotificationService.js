@@ -1,7 +1,10 @@
 function matchKeywords(user, post){
-	 _.find(user.keywords, function( keyword ){
+	var matched = _.find(user.keywords, function( keyword ){
 	 	return post.message.toLowerCase().indexOf(keyword.toLowerCase()) != -1
-	 }) !=undefined
+	 }) != undefined
+	sails.log(post.message)
+	sails.log(matched)
+	return matched
 }
 function match(post, cb){
 		User.findByPrice(post.price, function(err, users){
@@ -10,7 +13,7 @@ function match(post, cb){
 			 	 cb(err)
 			 	 return;
 			 }
-			 cb(undefined, _.filter(users, function(user, post) { return matchKeywords(user, post) }))
+			 cb(undefined, _.filter(users, function(user) { return matchKeywords(user, post) }))
 		});
 	}
 

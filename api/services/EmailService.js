@@ -34,16 +34,16 @@ function send(email, html, price, cb) {
             subject: 'Bike for ' + price + ' EUR', // Subject line
             html: html
     };
-
-     transporter.sendMail(mailOptions, function(error, info){
-            if(error){
-                console.log(error);
-                cb(error)
-            }else {
-                console.log('Message sent: ' + info.response);
-                cb()
-            }
-        });
+    cb()
+         // transporter.sendMail(mailOptions, function(error, info){
+         //        if(error){
+         //            console.log(error);
+         //            cb(error)
+         //        }else {
+         //            console.log('Message sent: ' + info.response);
+         //            cb()
+         //        }
+         //    });
 }
 
 

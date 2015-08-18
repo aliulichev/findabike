@@ -50,7 +50,7 @@ module.exports = {
 
     sendPost: function(user, post,cb) {       
     	
-        render (user, {post:post, name:user.name, userId:user.id}, function(err, html) {
+        render (user, {post:post, name:user.name, link:sails.getBaseURL() + "/unsubscribe/" + user.id}, function(err, html) {
                if(err) {
                     sails.log(err) 
                     cb(err) 

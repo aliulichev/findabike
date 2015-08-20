@@ -64,7 +64,7 @@ module.exports = {
                         return 
 
                     }
-                    console.log("sent post:" + post.id + " to " +  email)
+                    console.log("sent post:" + post.id + " to " +  user.emai)
                }) 
         })
 		

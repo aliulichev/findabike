@@ -20,7 +20,7 @@
  */
 
 module.exports.connections = {
-//mongo ds055762.mongolab.com:55762/heroku_s16wdr1d -u admin -p findabike
+//mongo ds055852.mongolab.com:55852/heroku_3q61jxr3 -u admin -p findabike
  Mongodb: {
     adapter: 'sails-mongo',
    // host: 'ds055762.mongolab.com',
@@ -28,7 +28,7 @@ module.exports.connections = {
     //user: 'admin',
     //password: 'findabike',
     //database: 'heroku_s16wdr1d'
-    url:'mongodb://admin:findabike@ds055762.mongolab.com:55762/heroku_s16wdr1d'
+    url:'mongodb://admin:findabike@ds055852.mongolab.com:55852/heroku_3q61jxr3'
   },
 
   //  Mongodb: {

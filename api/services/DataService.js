@@ -10,7 +10,7 @@ var parse = function(post){
 
     var message = post.message
     var picture = post.full_picture
-    if(!message && (!picture | picture.length === 0)){
+    if(!message || !picture){
         return result;
     }
     result.message = message

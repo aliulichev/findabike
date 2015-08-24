@@ -1,7 +1,20 @@
 <div id="fullpage" ng-controller="PageCtrl">
     <div class="title">find<i>a</i>bike</div>
-    <div class="info">
-        <p>We track facebook to find you a bike in Amsterdam</p>
+    <div class="info" ng-show="!hide_form">
+        <p>
+            You were searching for a bike in Amsterdam but could not find one?<br/>
+            Or maybe all bikes you liked are sold already?<br/>
+            That's ok. This service will help you to find the bike you are looking for<br/>
+            and you don't have to spend your time at all!<br/>
+            <br/>
+            How it works:<br/>
+            <br/>
+            We are tracking most popular 'bike-selling' groups on facebook<br/>
+            and notify you when somebody posts a bike which matches<br/>
+            your price and keywords.<br/>
+            Just leave your email, set maximum price for bike and<br/>
+            put some keywords ("van, moof" for example).
+        </p>
     </div>
     <div class="form" ng-show="!hide_form">
         <form ng-submit="submitForm();">
@@ -28,7 +41,7 @@
             </div>
         </form>
     </div>
-    <div class="form" ng-show="hide_form">
-        <center>Yeay! We are going to send you some bikes soon!</center>
+    <div class="info center" ng-show="hide_form">
+        Ok, now relax, and just wait for email! =)
     </div>
 </div>

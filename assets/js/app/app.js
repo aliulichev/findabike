@@ -20,9 +20,10 @@ angular.module('app').controller('PageCtrl', ['$scope', '$http', function ($scop
                 return item.text;
             })
         }).
-            then(function (res) {
+            then(function () {
                 $scope.hide_form = true;
-            }, function (response) {
+                ga('send', 'event', 'subscribe');
+            }, function () {
             });
     };
 }]);

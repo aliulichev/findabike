@@ -20,7 +20,7 @@
  */
 
 module.exports.connections = {
-//mongo ds055852.mongolab.com:55852/heroku_3q61jxr3 -u admin -p findabike
+
  Mongodb: {
     adapter: 'sails-mongo',
     url:''
